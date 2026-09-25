@@ -31,7 +31,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
-      <MobileConsultationBar />
+      {/* <MobileConsultationBar /> */}
     </>
   );
 }

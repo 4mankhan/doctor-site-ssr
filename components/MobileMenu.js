@@ -37,14 +37,14 @@ export default function MobileMenu({ open, onClose }) {
         onClick={onClose}
       />
       <div className="absolute right-0 top-0 h-full w-[min(100%,320px)] bg-white shadow-2xl flex flex-col">
-        <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
-          <p className="font-semibold text-slate-800 text-sm font-[family-name:var(--font-poppins)]">
+        <div className="flex items-center justify-between border-b border-slate-100 px-4 sm:px-5 py-4">
+          <p className="font-bold text-[#17212B] text-[15px] sm:text-base font-heading">
             {doctor.hospitalDisplayName}
           </p>
           <button
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-slate-600 hover:bg-slate-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-600"
+            className="rounded-lg p-2 text-[#64748B] hover:bg-[#E8F6FA] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0F766E]"
             aria-label="Close navigation"
           >
             <X className="h-5 w-5" />
@@ -56,14 +56,14 @@ export default function MobileMenu({ open, onClose }) {
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="rounded-xl px-4 py-3 text-base font-medium text-slate-700 hover:bg-teal-50 hover:text-teal-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-teal-600"
+              className="rounded-xl px-4 py-2.5 text-[15px] sm:text-base font-semibold text-[#17212B] hover:bg-[#E8F6FA] hover:text-[#0F766E] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#0F766E]"
             >
               {link.label}
             </Link>
           ))}
         </nav>
         <div className="p-4 border-t border-slate-100">
-          <Button href="#book" variant="primary" size="lg" className="w-full" onClick={onClose}>
+          <Button href="#book" variant="primary" size="md" className="w-full" onClick={onClose}>
             Book Consultation
           </Button>
         </div>

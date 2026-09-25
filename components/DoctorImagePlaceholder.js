@@ -1,46 +1,24 @@
-import Image from "next/image";
-import { Baby } from "lucide-react";
-import { doctor } from "@/data/doctor";
+import { Sparkles, Heart } from "lucide-react";
 
-/**
- * Replace placeholder with a real photo:
- * 1. Add image to public/images/doctor-photo.jpg
- * 2. Set usePhoto to true (or wire from doctor config)
- */
-export default function DoctorImagePlaceholder({ usePhoto = false }) {
-  if (usePhoto) {
-    return (
-      <div className="relative aspect-[4/5] w-full max-w-md mx-auto overflow-hidden rounded-3xl shadow-xl shadow-teal-900/10 ring-1 ring-slate-200/80">
-        <Image
-          src={doctor.placeholders.photoPath}
-          alt={`Portrait of ${doctor.name}`}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 400px"
-          priority
-        />
-      </div>
-    );
-  }
-
+export default function DoctorImagePlaceholder() {
   return (
-    <div
-      className="relative aspect-[4/5] w-full max-w-md mx-auto overflow-hidden rounded-3xl bg-gradient-to-br from-teal-50 via-sky-50 to-white shadow-xl shadow-teal-900/10 ring-1 ring-teal-100 flex flex-col items-center justify-center gap-4 p-8 text-center"
-      role="img"
-      aria-label={`Photo placeholder for ${doctor.name}`}
-    >
-      <div className="absolute inset-0 opacity-40 pointer-events-none" aria-hidden="true">
-        <div className="absolute -top-12 -right-12 h-48 w-48 rounded-full bg-teal-200/50 blur-2xl" />
-        <div className="absolute -bottom-8 -left-8 h-40 w-40 rounded-full bg-sky-200/50 blur-2xl" />
+    <div className="relative w-full max-w-[500px] mx-auto aspect-[4/5] rounded-[32px] bg-gradient-to-br from-[#E8F6FA] to-[#DDF5EE] p-1 shadow-[0_20px_40px_-15px_rgba(15,118,110,0.1)] overflow-hidden flex items-center justify-center group">
+      {/* Decorative background shapes */}
+      <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] rounded-[30px]" />
+      <div className="absolute top-10 left-10 text-[#0F766E]/20 animate-pulse">
+        <Sparkles size={32} />
       </div>
-      <div className="relative flex h-24 w-24 items-center justify-center rounded-full bg-white shadow-md text-teal-600">
-        <Baby className="h-12 w-12" strokeWidth={1.5} aria-hidden="true" />
+      <div className="absolute bottom-12 right-12 text-[#0F766E]/20">
+        <Heart size={40} fill="currentColor" />
       </div>
-      <div className="relative">
-        <p className="text-lg font-semibold text-slate-800 font-[family-name:var(--font-poppins)]">
-          {doctor.name}
-        </p>
-        <p className="mt-1 text-sm text-slate-500">Photo can be added here</p>
+      
+      {/* Central Illustration Area */}
+      <div className="relative z-10 flex flex-col items-center justify-center p-8 bg-white/60 backdrop-blur-md rounded-[24px] border border-white/50 shadow-sm w-[70%] h-[60%] group-hover:scale-[1.02] transition-transform duration-500">
+        <div className="h-24 w-24 rounded-full bg-[#0F766E] text-white flex items-center justify-center mb-6 shadow-[0_8px_20px_-6px_rgba(15,118,110,0.4)]">
+           <span className="font-heading font-bold text-3xl">SK</span>
+        </div>
+        <h3 className="font-heading font-bold text-xl text-[#17212B] text-center mb-1">Dr. Sunil Kohli</h3>
+        <p className="text-sm font-medium text-[#0F766E] text-center bg-[#E8F6FA] px-3 py-1 rounded-full">Senior Pediatrician</p>
       </div>
     </div>
   );

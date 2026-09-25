@@ -1,16 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #1e293b;
-  --primary: #0d9488;
-  --primary-dark: #0f766e;
+  --background: #F8FAF9;
+  --foreground: #17212B;
+  --primary: #0F766E;
+  --primary-light: #14b8a6;
+  --secondary: #E8F6FA;
+  --secondary-text: #64748B;
+  --accent: #DDF5EE;
+  --card-bg: #FFFFFF;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-manrope);
+  --font-heading: var(--font-jakarta);
 }
 
 html {
@@ -26,6 +31,11 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
 }
 
 .safe-bottom {
@@ -34,4 +44,12 @@ body {
 
 main {
   flex: 1;
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(15, 118, 110, 0.05), 0 8px 10px -6px rgba(15, 118, 110, 0.01);
 }

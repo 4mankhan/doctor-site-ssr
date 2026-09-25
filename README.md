@@ -6,7 +6,6 @@ Modern, responsive pediatric healthcare website built with **Next.js (JavaScript
 
 ```bash
 npm install
-npm install lucide-react
 ```
 
 ## Run locally

@@ -1,35 +1,31 @@
 import Link from "next/link";
 
-const variants = {
-  primary:
-    "bg-teal-600 text-white hover:bg-teal-700 shadow-md shadow-teal-600/20 hover:shadow-lg hover:shadow-teal-600/25",
-  secondary:
-    "bg-white text-teal-800 border border-teal-200 hover:bg-teal-50 hover:border-teal-300",
-  outline:
-    "bg-transparent text-teal-700 border-2 border-teal-600 hover:bg-teal-50",
-  warm: "bg-amber-500 text-white hover:bg-amber-600 shadow-md shadow-amber-500/25",
-};
-
-const sizes = {
-  sm: "px-4 py-2 text-sm",
-  md: "px-5 py-2.5 text-sm font-semibold",
-  lg: "px-6 py-3 text-base font-semibold",
-};
-
 export default function Button({
-  children,
   href,
+  onClick,
+  children,
   variant = "primary",
   size = "md",
   className = "",
   type = "button",
-  onClick,
   ...props
 }) {
-  const base =
-    "inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-600 disabled:opacity-50 disabled:pointer-events-none motion-reduce:transition-none";
+  const baseStyles = "inline-flex items-center justify-center font-semibold rounded-[12px] transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2";
+  
+  const variants = {
+    primary: "bg-[#0F766E] text-white hover:bg-[#0c5e58] hover:shadow-[0_8px_16px_-4px_rgba(15,118,110,0.3)] hover:-translate-y-[1px] focus-visible:outline-[#0F766E]",
+    secondary: "bg-white text-[#0F766E] border-2 border-[#E8F6FA] hover:border-[#0F766E] hover:bg-[#F8FAF9] hover:-translate-y-[1px] focus-visible:outline-[#0F766E]",
+    outline: "border border-slate-300 text-slate-700 hover:bg-slate-50 focus-visible:outline-slate-600",
+    ghost: "text-[#64748B] hover:text-[#0F766E] hover:bg-[#E8F6FA]",
+  };
 
-  const classes = `${base} ${variants[variant] || variants.primary} ${sizes[size] || sizes.md} ${className}`;
+  const sizes = {
+    sm: "px-4 py-2 text-[14px]",
+    md: "px-6 py-3 text-[15px]",
+    lg: "px-8 py-4 text-[16px]",
+  };
+
+  const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
 
   if (href) {
     return (
@@ -40,7 +36,7 @@ export default function Button({
   }
 
   return (
-    <button type={type} className={classes} onClick={onClick} {...props}>
+    <button type={type} onClick={onClick} className={classes} {...props}>
       {children}
     </button>
   );

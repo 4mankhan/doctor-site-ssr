@@ -1,49 +1,27 @@
 import { doctor } from "@/data/doctor";
 import FadeInOnScroll from "./FadeInOnScroll";
 
-const stats = [
-  {
-    label: "Years Experience",
-    value: `${doctor.experienceYearsOverall}+`,
-    sub: "Overall",
-  },
-  {
-    label: "As Specialist",
-    value: `${doctor.experienceYearsSpecialist}`,
-    sub: "Years",
-  },
-  {
-    label: "Consultation",
-    value: doctor.consultationFeeDisplay,
-    sub: "Fee",
-  },
-  {
-    label: "Patient Recommendation",
-    value: `${doctor.patientRecommendationPercent}%`,
-    sub: `Based on ${doctor.patientRecommendationCount} patients`,
-  },
-];
-
 export default function Stats() {
+  const stats = [
+    { label: "Years Experience", value: doctor.experienceYearsOverall ? doctor.experienceYearsOverall + "+" : "" },
+    { label: "Years as Specialist", value: doctor.experienceYearsSpecialist || "" },
+    { label: "Consultation", value: doctor.consultationFeeDisplay || "" },
+    { label: "Patient Recommendation", value: doctor.patientRecommendationPercent ? doctor.patientRecommendationPercent + "%" : "" },
+  ];
+
   return (
-    <section className="relative -mt-2 pb-10 md:pb-14" aria-label="Key statistics">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <FadeInOnScroll>
-          <ul className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            {stats.map((stat) => (
-              <li
-                key={stat.label}
-                className="rounded-2xl bg-white border border-slate-100 px-4 py-5 sm:px-5 sm:py-6 shadow-sm hover:shadow-md transition-shadow text-center motion-reduce:transition-none"
-              >
-                <p className="text-2xl sm:text-3xl font-bold text-teal-700 font-[family-name:var(--font-poppins)]">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-sm font-semibold text-slate-800">{stat.label}</p>
-                <p className="mt-0.5 text-xs text-slate-500">{stat.sub}</p>
-              </li>
-            ))}
-          </ul>
-        </FadeInOnScroll>
+    <section className="bg-white py-12 md:py-16 border-y border-slate-100" aria-label="Experience Statistics">
+      <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-4 divide-x-0 md:divide-x md:divide-slate-100">
+          {stats.map((stat, idx) => (
+            <FadeInOnScroll key={stat.label} delay={idx * 100} className="flex flex-col items-center justify-center text-center px-2 sm:px-4 group">
+              <dt className="text-[12px] sm:text-[14px] md:text-[15px] font-semibold text-[#64748B] order-2 mt-1 sm:mt-2">{stat.label}</dt>
+              <dd className="text-[28px] sm:text-[38px] md:text-[44px] font-extrabold text-[#0F766E] tracking-tight font-heading order-1 group-hover:scale-105 transition-transform duration-300">
+                {stat.value}
+              </dd>
+            </FadeInOnScroll>
+          ))}
+        </div>
       </div>
     </section>
   );

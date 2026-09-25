@@ -1,18 +1,18 @@
-import { Inter, Poppins } from "next/font/google";
+import { Manrope, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { doctor } from "@/data/doctor";
 import StructuredData from "@/components/StructuredData";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-manrope",
   display: "swap",
 });
 
-const poppins = Poppins({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-poppins",
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-jakarta",
   display: "swap",
 });
 
@@ -35,11 +35,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${inter.variable} ${poppins.variable} scroll-smooth`}>
-      <body className="min-h-full flex flex-col font-[family-name:var(--font-inter)] text-slate-800 bg-[#f8fafc] antialiased">
+    <html lang="en" className={`${manrope.variable} ${jakarta.variable} scroll-smooth`}>
+      <body className="min-h-full flex flex-col font-sans text-[#17212B] bg-[#F8FAF9] antialiased">
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-teal-600 focus:px-4 focus:py-2 focus:text-white"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:rounded-lg focus:bg-[#0F766E] focus:px-4 focus:py-2 focus:text-white"
         >
           Skip to main content
         </a>

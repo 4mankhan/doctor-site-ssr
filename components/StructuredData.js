@@ -19,11 +19,11 @@ export default function StructuredData() {
         addressCountry: "IN",
       },
     },
-    alumniOf: doctor.qualifications.map((q) => ({
+    alumniOf: (doctor.qualifications || []).map((q) => ({
       "@type": "CollegeOrUniversity",
       name: q.institution,
     })),
-    memberOf: doctor.memberships.map((name) => ({
+    memberOf: (doctor.memberships || []).map((name) => ({
       "@type": "Organization",
       name,
     })),
