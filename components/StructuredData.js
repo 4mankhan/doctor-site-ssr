@@ -32,11 +32,11 @@ export default function StructuredData() {
   const clinic = {
     "@context": "https://schema.org",
     "@type": ["MedicalClinic", "Hospital", "LocalBusiness"],
-    name: doctor.hospitalDisplayName,
+    name: doctor.clinicName,
     description: doctor.seo.description,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "Arjun Nagar Rd, Ayodhya Kunj-A, South Arjun Nagar, Saraikhwaja, Arjun Nagar",
+      streetAddress: "Kohli Childrens Hospital, Arjun Nagar Rd, Ayodhya Kunj-A, South Arjun Nagar, Saraikhwaja, Arjun Nagar, Agra, Uttar Pradesh 282001",
       addressLocality: "Agra",
       addressRegion: "Uttar Pradesh",
       postalCode: "282001",

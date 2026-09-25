@@ -2,7 +2,7 @@ export const doctor = {
   name: "Dr. Sunil Kohli",
   specialization: "Pediatrician",
   tagline: "Experienced Pediatrician in Agra",
-  hospitalName: "Kohli Childrens Hospital",
+  clinicName: "Kohli Chinic",
   hospitalDisplayName: "Kohli Children's Hospital",
   profileClaimed: true,
   registrationVerified: true,
@@ -18,7 +18,7 @@ export const doctor = {
     "Recommended by 87% of 23 patients on Practo.",
   address: {
     lines: [
-      "Kohli Childrens Hospital",
+      "Kohli Clinic",
       "Arjun Nagar Rd",
       "Ayodhya Kunj-A",
       "South Arjun Nagar",
@@ -45,38 +45,38 @@ export const doctor = {
     "Indian Academy of Paediatric",
     "Indian Academy of Paediatrics (IAP)",
   ],
-  areasOfFocus: [
-    {
-      title: "Chicken Pox (Varicella)",
-      description:
-        "Care and guidance related to varicella (chicken pox) in children.",
-    },
-    {
-      title: "NICU",
-      description:
-        "Neonatal intensive care support for newborns requiring specialized monitoring.",
-    },
-    {
-      title: "PICU",
-      description:
-        "Pediatric intensive care for children who need close medical attention.",
-    },
-    {
-      title: "Viral Fever",
-      description:
-        "Evaluation and management of fever associated with common viral illnesses in children.",
-    },
-    {
-      title: "Pediatrics & Neonatology",
-      description:
-        "General pediatric and newborn care across a range of childhood health needs.",
-    },
-    {
-      title: "Growth & Development Evaluation / Management",
-      description:
-        "Evaluation and management related to children's growth and developmental progress.",
-    },
-  ],
+ areasOfFocus: [
+  {
+    title: "Pediatrics & Neonatology",
+    description:
+      "Comprehensive care for infants, children, and newborns.",
+  },
+  {
+    title: "Growth & Development Evaluation / Management",
+    description:
+      "Assessment and guidance for healthy growth and childhood development.",
+  },
+  {
+    title: "Viral Fever",
+    description:
+      "Evaluation and management of common childhood viral illnesses.",
+  },
+  {
+    title: "Chicken Pox (Varicella)",
+    description:
+      "Pediatric assessment and supportive care for chicken pox.",
+  },
+  {
+    title: "NICU",
+    description:
+      "Specialized care for newborns requiring closer medical monitoring.",
+  },
+  {
+    title: "PICU",
+    description:
+      "Hospital-based care for children requiring intensive monitoring and treatment.",
+  },
+],
   profileDescription:
     "Dr. Sunil Kohli is a Pediatrician in Agra with 36 years of experience, practising at Kohli Children Hospital. Qualifications include MBBS from Sarojini Naidu Medical College, Agra and MD - Pediatrics from Sarojini Naidu Medical College, Agra. Memberships include Indian Academy of Paediatric and Indian Academy of Paediatrics (IAP). Areas of focus include Chicken Pox (varicella), NICU, PICU, Viral Fever, Pediatrics & Neonatology and Growth & Development Evaluation / Management.",
   heroSupportingText:
@@ -92,10 +92,10 @@ export const doctor = {
   },
   placeholders: {
     photoPath: "/images/doctor-photo.jpg",
-    phone: null,
-    whatsapp: null,
-    email: null,
-    clinicTimings: null,
+    phone: "9999999999",
+    whatsapp: "9999999999",
+    email: "sunilkohli@gmail.com",
+    clinicTimings: { monday: "10:30 AM – 2:00 PM & 7:00 PM – 9:00/9:30 PM", tuesday: "10:30 AM – 2:00 PM & 7:00 PM – 9:00/9:30 PM", wednesday: "10:30 AM – 2:00 PM & 7:00 PM – 9:00/9:30 PM", thursday: "10:30 AM – 3:00 PM & 7:00 PM – 9:00 PM", friday: "10:30 AM – 3:00 PM & 7:00 PM – 9:00 PM", saturday: "10:30 AM – 3:00 PM & 7:00 PM – 9:00 PM", sunday: "Closed", },
     appointmentApiEndpoint: null,
     googleMapsApiKey: null,
   },
