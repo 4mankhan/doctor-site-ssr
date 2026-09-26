@@ -128,7 +128,7 @@ export default function Header() {
               <div className="flex items-center p-1">
                 <Image
                   src={logo}
-                  alt="Pediatrician logo"
+                  alt={`${doctor.hospitalDisplayName} logo — ${doctor.specialization} clinic in Agra`}
                   width={40}
                   height={40}
                   priority

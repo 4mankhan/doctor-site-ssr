@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dr-sunil-kohli.vercel.app/sitemap.xml

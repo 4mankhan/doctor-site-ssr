@@ -35,11 +35,9 @@ export default function AboutDoctor() {
                 </span>
               </div>
 
-              <div id="about-heading">
-                <SectionHeading align="left">
-                  About Dr. Sunil Kohli
-                </SectionHeading>
-              </div>
+              <SectionHeading id="about-heading" align="left">
+                About Dr. Sunil Kohli
+              </SectionHeading>
 
               <div className="mt-7 space-y-5 text-[16px] leading-[1.85] text-[#64748B] sm:text-[17px]">
                 {paragraphs.length > 0 ? (

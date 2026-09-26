@@ -50,7 +50,7 @@ export default function ContactSection() {
                   <div>
                     <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
                       <h3 className="text-lg font-extrabold tracking-tight text-white sm:text-xl font-[family-name:var(--font-poppins)]">
-                        Kohli Hospital
+                        Kohli Children's Hospital
                       </h3>
 
                       <span className="rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider text-white/80">
@@ -93,15 +93,15 @@ export default function ContactSection() {
                     </p>
                   </div>
 
-<h4 className="mt-2 text-xl font-extrabold tracking-tight text-[#17212B] sm:text-2xl font-[family-name:var(--font-poppins)]">
-  Dedicated pediatric care, emergency support & hospital admission.
-</h4>
+                  <h4 className="mt-2 text-xl font-extrabold tracking-tight text-[#17212B] sm:text-2xl font-[family-name:var(--font-poppins)]">
+                    Dedicated pediatric care, emergency support & hospital admission.
+                  </h4>
 
-<p className="mt-2.5 max-w-2xl text-sm leading-6 text-[#64748B]">
-  Kohli Hospital provides pediatric consultation, emergency support and
-  hospital admission care under the care of Dr. Sunil Kohli and Dr. Monica
-  Kohli.
-</p>
+                  <p className="mt-2.5 max-w-2xl text-sm leading-6 text-[#64748B]">
+                    Kohli Hospital provides pediatric consultation, emergency support and
+                    hospital admission care under the care of Dr. Sunil Kohli and Dr. Monica
+                    Kohli.
+                  </p>
 
                 </div>
 
