@@ -19,12 +19,31 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata = {
   title: doctor.seo.title,
   description: doctor.seo.description,
+
   keywords: [
     "Dr Sunil Kohli",
     "Pediatrician Agra",
     "Kohli Children's Hospital",
     "pediatric doctor Agra",
   ],
+
+  icons: {
+    icon: [
+      {
+        url: "images/fevicon/fevicon2.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+    apple: [
+      {
+        url: "images/fevicon/fevicon2.png",
+        type: "image/png",
+        sizes: "512x512",
+      },
+    ],
+  },
+
   openGraph: {
     title: doctor.seo.title,
     description: doctor.seo.description,

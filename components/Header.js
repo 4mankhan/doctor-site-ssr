@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState, useEffect } from "react";
@@ -8,6 +7,8 @@ import { Menu, ArrowUpRight } from "lucide-react";
 import { navLinks, doctor } from "@/data/doctor";
 import Button from "./Button";
 import MobileMenu from "./MobileMenu";
+import Image from "next/image";
+import logo from "@/public/images/fevicon/fevicon2.png";
 
 function PediatricCareIcon() {
   return (
@@ -112,30 +113,49 @@ export default function Header() {
         }`}
       >
         <div className="mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-
           {/* Logo */}
           <Link
             href="#home"
             className="group flex min-w-0 items-center gap-3 rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#0F766E]"
-            aria-label={`${doctor.hospitalDisplayName} - Home`}
+            aria-label={`${doctor.clinicName} - Home`}
           >
             <span
               className={`relative flex shrink-0 items-center justify-center rounded-[15px] text-[#0F766E] transition-all duration-300 ${
-                scrolled
-                  ? "h-10 w-10 bg-[#F0FCF8]"
-                  : "h-11 w-11 bg-[#E8F6FA]"
+                scrolled ? "h-10 w-10 bg-[#F0FCF8]" : "h-11 w-11 bg-[#E8F6FA]"
               } group-hover:bg-[#0F766E] group-hover:text-white`}
             >
-              <PediatricCareIcon />
+              {/* <PediatricCareIcon /> */}
+              <div className="flex items-center p-1">
+                <Image
+                  src={logo}
+                  alt="Pediatrician logo"
+                  width={40}
+                  height={40}
+                  priority
+                />
+              </div>
 
               {/* Tiny decorative dot */}
               <span className="absolute -right-0.5 -top-0.5 h-2.5 w-2.5 rounded-full border-2 border-white bg-[#2A9D8F]" />
             </span>
 
             <span className="min-w-0">
-              <span className="block truncate font-heading text-[14px] font-extrabold leading-tight tracking-[-0.01em] text-[#17212B] sm:text-[16px]">
-                {doctor.hospitalDisplayName}
-              </span>
+             <span
+      className="
+        block
+        break-words
+        font-heading
+        text-[12px]
+        font-extrabold
+        leading-tight
+        tracking-[-0.01em]
+        text-[#17212B]
+        sm:text-[16px]
+        sm:truncate
+      "
+    >
+      {doctor.clinicName}
+    </span>
 
               <span className="mt-0.5 block text-[9px] font-bold uppercase tracking-[0.16em] text-[#0F766E] sm:text-[10px]">
                 Pediatric Care
@@ -164,14 +184,24 @@ export default function Header() {
           {/* Actions */}
           <div className="flex shrink-0 items-center gap-2 sm:gap-3">
             <Button
-              href="#book"
-              variant="primary"
-              size="sm"
-              className="hidden rounded-full px-5 shadow-[0_8px_20px_-10px_rgba(15,118,110,0.6)] sm:inline-flex"
-            >
-              Book Consultation
-              <ArrowUpRight className="ml-1.5 h-3.5 w-3.5" />
-            </Button>
+    href="#book"
+    variant="primary"
+    size="sm"
+    className="
+      inline-flex
+      shrink-0
+      whitespace-nowrap
+      rounded-full
+      px-2.5
+      text-[10px]
+      shadow-[0_8px_20px_-10px_rgba(15,118,110,0.6)]
+      sm:px-5
+      sm:text-sm
+    "
+  >
+    Book Consultation
+    <ArrowUpRight className="ml-1 h-3 w-3 sm:ml-1.5 sm:h-3.5 sm:w-3.5" />
+  </Button>
 
             <button
               type="button"
@@ -187,10 +217,7 @@ export default function Header() {
         </div>
       </header>
 
-      <MobileMenu
-        open={menuOpen}
-        onClose={() => setMenuOpen(false)}
-      />
+      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} />
     </>
   );
 }

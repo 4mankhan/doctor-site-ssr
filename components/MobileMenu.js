@@ -70,7 +70,7 @@ export default function MobileMenu({ open, onClose }) {
 
             <div className="min-w-0">
               <p className="truncate text-base font-extrabold text-[#17212B] font-heading">
-                {doctor.hospitalDisplayName}
+                {doctor.clinicName}
               </p>
 
               <p className="mt-0.5 truncate text-xs font-medium text-[#0F766E]">

@@ -290,19 +290,17 @@ export default function AppointmentForm() {
                   : "Request Consultation"}
               </Button>
 
-              <div className="text-center text-[13px] text-[#64748B] mt-4 font-medium leading-relaxed space-y-1">
-                <p>
-                  Our staff will call you to confirm the exact appointment time.
-                </p>
-                <p>
-                  <span className="font-bold text-[#17212B]">Important:</span>{" "}
-                  <p>
-                    Emergency consultations may be subject to additional
-                    charges. Sunday appointments are available during daytime
-                    hours only.
-                  </p>
-                </p>
-              </div>
+             <div className="text-center text-[13px] text-[#64748B] mt-4 font-medium leading-relaxed space-y-1">
+  <p>
+    Our staff will call you to confirm the exact appointment time.
+  </p>
+
+  <p>
+    <span className="font-bold text-[#17212B]">Important:</span>{" "}
+    Emergency consultations may be subject to additional charges. Sunday
+    appointments are available during daytime hours only.
+  </p>
+</div>
             </form>
           </div>
         </div>
