@@ -12,6 +12,7 @@ import AppointmentForm from "@/components/AppointmentForm";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import MobileConsultationBar from "@/components/MobileConsultationBar";
+import OurProfessionals from "@/components/ourProfessionals";
 
 export default function Home() {
   return (
@@ -25,6 +26,7 @@ export default function Home() {
         <ExpertiseGrid />
         <Qualifications />
         <Memberships />
+        <OurProfessionals/>
         <PatientRecommendation />
         <HospitalLocation />
         <AppointmentForm />

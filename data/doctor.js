@@ -114,8 +114,8 @@ export function getGoogleMapsDirectionsUrl() {
 export const navLinks = [
   { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
+  { href: "#professionals", label: "Professionals" },
   { href: "#expertise", label: "Expertise" },
-  { href: "#qualifications", label: "Qualifications" },
   { href: "#hospital", label: "Hospital" },
   { href: "#contact", label: "Contact" },
 ];
