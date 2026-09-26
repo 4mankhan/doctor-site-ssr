@@ -13,7 +13,7 @@ export default function Footer() {
   const timings = doctor.placeholders.clinicTimings;
 
   return (
-    <footer className="relative overflow-hidden bg-[#17212B] text-slate-300 border-t-4 border-[#0F766E]">
+    <footer id="contact" className="relative overflow-hidden bg-[#17212B] text-slate-300 border-t-4 border-[#0F766E]">
 
       {/* Decorative glow */}
       <div className="pointer-events-none absolute -top-32 right-0 h-72 w-72 rounded-full bg-[#0F766E]/10 blur-3xl" />

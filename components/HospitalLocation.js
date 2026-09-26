@@ -67,7 +67,7 @@ export default function HospitalLocation() {
                   </p>
 
                   <h3 className="mt-2 font-heading text-[23px] font-extrabold tracking-[-0.02em] text-[#17212B] sm:text-[26px]">
-                    {doctor.hospitalDisplayName}
+                    {doctor.clinicName}
                   </h3>
 
                   <address className="mt-3 max-w-md not-italic text-[14px] leading-6 text-[#64748B]">

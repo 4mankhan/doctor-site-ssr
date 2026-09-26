@@ -1,34 +1,85 @@
+
 import { doctor } from "@/data/doctor";
-import { Stethoscope, Languages, FileText, GraduationCap } from "lucide-react";
+import {
+  Stethoscope,
+  Languages,
+  FileText,
+  GraduationCap,
+} from "lucide-react";
 import FadeInOnScroll from "./FadeInOnScroll";
 
 export default function QuickInfo() {
   const items = [
-    { icon: <Stethoscope />, label: "Specialization", value: doctor.specialization },
-    { icon: <Languages />, label: "Languages Spoken", value: doctor.languages.join(", ") },
-    { icon: <FileText />, label: "Registration", value: doctor.registration },
-    { icon: <GraduationCap />, label: "Qualification", value: (doctor.qualifications || []).map(q => q.degree).join(", ") },
+    {
+      icon: Stethoscope,
+      label: "Specialization",
+      value: doctor.specialization,
+    },
+    {
+      icon: Languages,
+      label: "Languages",
+      value: doctor.languages.join(", "),
+    },
+    {
+      icon: FileText,
+      label: "Registration",
+      value: doctor.registration,
+    },
+    {
+      icon: GraduationCap,
+      label: "Qualification",
+      value: (doctor.qualifications || [])
+        .map((q) => q.degree)
+        .join(", "),
+    },
   ];
 
   return (
-    <section className="py-12 md:py-16 bg-white border-y border-slate-100">
-      <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
+    <section className="border-y border-slate-100 bg-white py-8 md:py-10">
+      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         <FadeInOnScroll>
-            <div className="bg-white rounded-[24px] border border-slate-100 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.05)] p-8">
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
-                {items.map((item, idx) => (
-                    <div key={idx} className={`flex items-start gap-4 ${idx !== 0 ? 'pt-6 sm:pt-0 sm:pl-8 lg:pl-8' : ''}`}>
-                    <div className="h-12 w-12 shrink-0 rounded-[14px] bg-[#E8F6FA] text-[#0F766E] flex items-center justify-center">
-                        {item.icon}
+          <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-[0_8px_30px_-20px_rgba(15,23,42,0.18)]">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+              {items.map((item, idx) => {
+                const Icon = item.icon;
+
+                return (
+                  <div
+                    key={item.label}
+                    className={[
+                      "flex min-h-[104px] items-center gap-3.5 px-5 py-4",
+                      "border-slate-100",
+                      idx > 0 ? "border-t sm:border-t-0 sm:border-l" : "",
+                      idx === 2 ? "lg:border-l" : "",
+                    ].join(" ")}
+                  >
+                    {/* Icon */}
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E8F6FA] text-[#0F766E]">
+                      <Icon
+                        className="h-[18px] w-[18px]"
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      />
                     </div>
-                    <div>
-                        <p className="text-[13px] font-semibold text-[#64748B] uppercase tracking-wide mb-1">{item.label}</p>
-                        <p className="text-[16px] font-bold text-[#17212B] leading-tight">{item.value}</p>
+
+                    {/* Content */}
+                    <div className="min-w-0">
+                      <p className="text-[10px] font-bold uppercase tracking-[0.14em] text-slate-400">
+                        {item.label}
+                      </p>
+
+                      <p
+                        className="mt-1 line-clamp-2 text-[13px] font-bold leading-5 text-[#17212B]"
+                        title={item.value}
+                      >
+                        {item.value}
+                      </p>
                     </div>
-                    </div>
-                ))}
-                </div>
+                  </div>
+                );
+              })}
             </div>
+          </div>
         </FadeInOnScroll>
       </div>
     </section>

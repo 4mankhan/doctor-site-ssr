@@ -21,7 +21,7 @@ export default function ContactSection() {
 
   return (
     <section
-      id="contact"
+      id="hospital"
       className="relative overflow-hidden bg-[#F8FAF9] py-12 scroll-mt-20 md:py-16"
       aria-labelledby="contact-heading"
     >
