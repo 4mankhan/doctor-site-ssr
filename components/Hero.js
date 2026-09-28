@@ -5,6 +5,7 @@ import Button from "./Button";
 import FadeInOnScroll from "./FadeInOnScroll";
 import ProfileClaimedBadge from "./profileVerification";
 import MedicalVerifiedBadge from "./medicalVerificationBadge";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -122,6 +123,39 @@ export default function Hero() {
           </div>
         </FadeInOnScroll>
       </div>
+
+<div className="hidden w-full -translate-x-[100px] -translate-y-24 justify-end lg:flex">
+  <div className="premium-icon">
+    <div className="premium-icon-glow" />
+
+    <svg
+      className="premium-icon-text"
+      viewBox="0 0 100 100"
+      aria-hidden="true"
+    >
+      <defs>
+        <path
+          id="textCircle"
+          d="M 50,50 m -43,0 a 43,43 0 1,1 86,0 a 43,43 0 1,1 -86,0"
+        />
+      </defs>
+
+      <text>
+        <textPath href="#textCircle">
+          PEDIATRIC CARE • HEALTHY KIDS • HAPPY HEARTS •
+        </textPath>
+      </text>
+    </svg>
+
+    <Image
+      src="/images/fevicon/fevicon2.png"
+      alt="Favicon"
+      width={64}
+      height={64}
+      className="premium-icon-image"
+    />
+  </div>
+</div>
     </section>
   );
 }

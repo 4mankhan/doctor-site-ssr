@@ -7,7 +7,7 @@ const professionals = [
   {
     name: "Dr. Sunil Kohli",
     title: "Pediatric Specialist",
-    image: "/images/dr.sunil_kohli.avif",
+    image: "/images/dr.sunil_kohli.png",
     qualifications: [
       "MD (Pediatrics) — Sarojini Naidu Medical College, Agra — 1990",
       "MBBS — Sarojini Naidu Medical College, Agra — 1986",
@@ -17,7 +17,7 @@ const professionals = [
       {
     name: "Dr. Monica Kohli",
     title: "Pediatric Specialist",
-    image: "/images/dr.monica_kohli.avif",
+    image: "/images/dr.monica_kohli.png",
     qualifications: [
       "MD (Pediatrics) — Sarojini Naidu Medical College, Agra — 1992",
       "MBBS — Sarojini Naidu Medical College, Agra — 1989",
