@@ -44,74 +44,41 @@ export default function AppointmentForm() {
   const [status, setStatus] = useState("idle");
   const [openFaq, setOpenFaq] = useState(0);
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+    setStatus("submitting");
 
-  setStatus("submitting");
+    const formData = new FormData(e.currentTarget);
 
-  const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      phone: formData.get("phone"),
+      date: formData.get("date"),
+      time: formData.get("time"),
+    };
 
-  const data = {
-    name: formData.get("name"),
-    phone: formData.get("phone"),
-    date: formData.get("date"),
-    time: formData.get("time"),
-  };
+    try {
+      const response = await fetch("/api/appointment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-  try {
-    const response = await fetch("/api/appointment", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+      const result = await response.json();
 
-    const result = await response.json();
+      if (!response.ok) {
+        throw new Error(result.message || "Submission failed");
+      }
 
-    if (!response.ok) {
-      throw new Error(result.message || "Submission failed");
+      setStatus("success");
+    } catch (error) {
+      console.error("Appointment submission error:", error);
+      setStatus("error");
     }
-
-    setStatus("success");
-  } catch (error) {
-    console.error("Appointment submission error:", error);
-    setStatus("error");
-  }
-};
-
-
-  if (status === "success") {
-    return (
-      <section id="book" className="py-16 md:py-24 bg-white">
-        <div className="mx-auto max-w-[800px] px-6 lg:px-8">
-          <div className="bg-white rounded-[32px] p-12 text-center border border-slate-100 shadow-[0_10px_30px_-15px_rgba(15,118,110,0.1)]">
-            <div className="mx-auto h-20 w-20 bg-[#DDF5EE] rounded-full flex items-center justify-center mb-6">
-              <CheckCircle2 className="h-10 w-10 text-[#0F766E]" />
-            </div>
-
-            <h3 className="text-3xl font-extrabold font-heading text-[#17212B] mb-4">
-              Request Received
-            </h3>
-
-            <p className="text-[#64748B] text-lg font-medium">
-              Thank you for reaching out. Our clinic will contact you shortly to
-              confirm your appointment time.
-            </p>
-
-            <Button
-              onClick={() => setStatus("idle")}
-              variant="secondary"
-              className="mt-8"
-            >
-              Book Another Appointment
-            </Button>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  };
 
   return (
     <section
@@ -194,154 +161,211 @@ const handleSubmit = async (e) => {
           </div>
 
           {/* Appointment Form */}
-          <div className="bg-white rounded-[32px] p-8 md:p-12 border border-slate-100 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.08)]">
-            <div className="mb-8">
-              <h3 className="text-2xl font-extrabold font-heading text-[#17212B]">
-                Request an Appointment
-              </h3>
+          {status !== "success" && (
+            <div className="bg-white rounded-[32px] p-8 md:p-12 border border-slate-100 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.08)]">
+              <div className="mb-8">
+                <h3 className="text-2xl font-extrabold font-heading text-[#17212B]">
+                  Request an Appointment
+                </h3>
 
-              <p className="text-[#64748B] mt-2 font-medium">
-                Share your details and our staff will contact you to confirm
-                your appointment.
-              </p>
-            </div>
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {/* Parent's Name */}
-                <div className="space-y-2">
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-bold text-[#17212B]"
-                  >
-                    Child's Name
-                  </label>
-
-
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <User className="h-5 w-5 text-slate-400" />
-                    </div>
-
-                   <input
-  type="text"
-  id="name"
-  name="name"
-  required
-  className="block w-full pl-11 pr-4 py-3.5 bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
-  placeholder="Enter child's full name"
-/>
-                  </div>
-                </div>
-
-                {/* Phone */}
-                <div className="space-y-2">
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-bold text-[#17212B]"
-                  >
-                    Phone Number
-                  </label>
-
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Phone className="h-5 w-5 text-slate-400" />
-                    </div>
-
-                    <input
-  type="tel"
-  id="phone"
-  name="phone"
-  required
-  className="block w-full pl-11 pr-4 py-3.5 bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
-  placeholder="Mobile number"
-/>
-                  </div>
-                </div>
-
-                {/* Date */}
-                <div className="space-y-2">
-                  <label
-                    htmlFor="date"
-                    className="block text-sm font-bold text-[#17212B]"
-                  >
-                    Preferred Date
-                  </label>
-
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <CalendarDays className="h-5 w-5 text-slate-400" />
-                    </div>
-<input
-  type="date"
-  id="date"
-  name="date"
-  required
-  className="block w-full pl-11 pr-4 py-3.5 md:text-sm bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
-/>
-                  </div>
-                </div>
-
-                {/* Time */}
-                <div className="space-y-2">
-                  <label
-                    htmlFor="time"
-                    className="block text-sm font-bold text-[#17212B]"
-                  >
-                    Preferred Time (approx)
-                  </label>
-
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                      <Clock className="h-5 w-5 text-slate-400" />
-                    </div>
-
-                   <select
-  id="time"
-  name="time"
-  required
-  className="block w-full pl-11 pr-4 py-3.5 md:text-sm bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium appearance-none"
->
-  <option value="">Select a time slot</option>
-  <option value="Morning (10 AM - 1 PM)">
-    Morning (10 AM - 1 PM)
-  </option>
-  <option value="Afternoon (2 PM - 5 PM)">
-    Afternoon (2 PM - 5 PM)
-  </option>
-  <option value="Evening (6 PM - 8 PM)">
-    Evening (6 PM - 8 PM)
-  </option>
-</select>
-                  </div>
-                </div>
+                <p className="text-[#64748B] mt-2 font-medium">
+                  Share your details and our staff will contact you to confirm
+                  your appointment.
+                </p>
               </div>
 
-              <Button
-                type="submit"
-                variant="primary"
-                size="lg"
-                className="w-full mt-4"
-                disabled={status === "submitting"}
-              >
-                {status === "submitting"
-                  ? "Submitting..."
-                  : "Request Consultation"}
-              </Button>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Parent's Name */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-bold text-[#17212B]"
+                    >
+                      Child's Name
+                    </label>
 
-             <div className="text-center text-[13px] text-[#64748B] mt-4 font-medium leading-relaxed space-y-1">
-  <p>
-    Our staff will call you to confirm the exact appointment time.
-  </p>
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <User className="h-5 w-5 text-slate-400" />
+                      </div>
 
-  <p>
-    <span className="font-bold text-[#17212B]">Important:</span>{" "}
-    Emergency consultations may be subject to additional charges. Sunday
-    appointments are available during daytime hours only.
-  </p>
-</div>
-            </form>
-          </div>
+                      <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        required
+                        className="block w-full pl-11 pr-4 py-3.5 bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
+                        placeholder="Enter child's full name"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Phone */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-bold text-[#17212B]"
+                    >
+                      Phone Number
+                    </label>
+
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <Phone className="h-5 w-5 text-slate-400" />
+                      </div>
+
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        required
+                        className="block w-full pl-11 pr-4 py-3.5 bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
+                        placeholder="Mobile number"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Date */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="date"
+                      className="block text-sm font-bold text-[#17212B]"
+                    >
+                      Preferred Date
+                    </label>
+
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <CalendarDays className="h-5 w-5 text-slate-400" />
+                      </div>
+                      <input
+                        type="date"
+                        id="date"
+                        name="date"
+                        required
+                        className="block w-full pl-11 pr-4 py-3.5 md:text-sm bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Time */}
+                  <div className="space-y-2">
+                    <label
+                      htmlFor="time"
+                      className="block text-sm font-bold text-[#17212B]"
+                    >
+                      Preferred Time (approx)
+                    </label>
+
+                    <div className="relative">
+                      <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <Clock className="h-5 w-5 text-slate-400" />
+                      </div>
+
+                      <select
+                        id="time"
+                        name="time"
+                        required
+                        className="block w-full pl-11 pr-4 py-3.5 md:text-sm bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium appearance-none"
+                      >
+                        <option value="">Select a time slot</option>
+                        <option value="Morning (10 AM - 1 PM)">
+                          Morning (10 AM - 1 PM)
+                        </option>
+                        <option value="Afternoon (2 PM - 5 PM)">
+                          Afternoon (2 PM - 5 PM)
+                        </option>
+                        <option value="Evening (6 PM - 8 PM)">
+                          Evening (6 PM - 8 PM)
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <Button
+                  type="submit"
+                  variant="primary"
+                  size="lg"
+                  className="w-full mt-4"
+                  disabled={status === "submitting"}
+                >
+                  {status === "submitting"
+                    ? "Submitting..."
+                    : "Request Consultation"}
+                </Button>
+
+                <div className="text-center text-[13px] text-[#64748B] mt-4 font-medium leading-relaxed space-y-1">
+                  <p>
+                    Our staff will call you to confirm the exact appointment
+                    time.
+                  </p>
+
+                  <p>
+                    <span className="font-bold text-[#17212B]">Important:</span>{" "}
+                    Emergency consultations may be subject to additional
+                    charges. Sunday appointments are available during daytime
+                    hours only.
+                  </p>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {status === "success" && (
+            <div className="h-full min-h-[520px] bg-white rounded-[32px] p-8 md:p-10 border border-[#DDF5EE] shadow-[0_20px_50px_-25px_rgba(15,118,110,0.25)] flex items-center justify-center relative overflow-hidden">
+              {/* Subtle decorative background */}
+              <div className="absolute -top-24 -right-24 h-56 w-56 rounded-full bg-[#E8F6FA]/60 blur-3xl pointer-events-none" />
+
+              <div className="absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-[#DDF5EE]/60 blur-3xl pointer-events-none" />
+
+              <div className="relative z-10 max-w-md text-center">
+                {/* Success Icon */}
+                <div className="mx-auto mb-7 flex h-20 w-20 items-center justify-center rounded-full bg-[#DDF5EE] ring-8 ring-[#F3FBF8]">
+                  <CheckCircle2
+                    className="h-10 w-10 text-[#0F766E]"
+                    strokeWidth={2}
+                  />
+                </div>
+
+                {/* Small Label */}
+                <span className="inline-block mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[#0F766E]">
+                  Appointment Request
+                </span>
+
+                {/* Heading */}
+                <h3 className="text-3xl md:text-[34px] font-extrabold font-heading tracking-tight text-[#17212B]">
+                  Request Received
+                </h3>
+
+                {/* Description */}
+                <p className="mt-4 text-[15px] md:text-base leading-7 text-[#64748B] font-medium">
+                  Thank you for reaching out to us. Our clinic will contact you
+                  shortly to confirm your appointment date and time.
+                </p>
+
+                {/* Divider */}
+                <div className="mx-auto my-7 h-px w-16 bg-[#DDF5EE]" />
+
+                {/* Confirmation Note */}
+                <p className="text-sm leading-6 text-[#64748B]">
+                  Please keep your phone available for our staff's confirmation
+                  call.
+                </p>
+
+                {/* Button */}
+                <Button
+                  type="button"
+                  onClick={() => setStatus("idle")}
+                  variant="secondary"
+                  className="mt-8"
+                >
+                  Book Another Appointment
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </section>
