@@ -44,14 +44,43 @@ export default function AppointmentForm() {
   const [status, setStatus] = useState("idle");
   const [openFaq, setOpenFaq] = useState(0);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStatus("submitting");
 
-    setTimeout(() => {
-      setStatus("success");
-    }, 1500);
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  setStatus("submitting");
+
+  const formData = new FormData(e.currentTarget);
+
+  const data = {
+    name: formData.get("name"),
+    phone: formData.get("phone"),
+    date: formData.get("date"),
+    time: formData.get("time"),
   };
+
+  try {
+    const response = await fetch("/api/appointment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      throw new Error(result.message || "Submission failed");
+    }
+
+    setStatus("success");
+  } catch (error) {
+    console.error("Appointment submission error:", error);
+    setStatus("error");
+  }
+};
+
 
   if (status === "success") {
     return (
@@ -185,21 +214,23 @@ export default function AppointmentForm() {
                     htmlFor="name"
                     className="block text-sm font-bold text-[#17212B]"
                   >
-                    Parent'sName
+                    Child's Name
                   </label>
+
 
                   <div className="relative">
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                       <User className="h-5 w-5 text-slate-400" />
                     </div>
 
-                    <input
-                      type="text"
-                      id="name"
-                      required
-                      className="block w-full pl-11 pr-4 py-3.5 bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
-                      placeholder="Enter full name"
-                    />
+                   <input
+  type="text"
+  id="name"
+  name="name"
+  required
+  className="block w-full pl-11 pr-4 py-3.5 bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
+  placeholder="Enter child's full name"
+/>
                   </div>
                 </div>
 
@@ -218,12 +249,13 @@ export default function AppointmentForm() {
                     </div>
 
                     <input
-                      type="tel"
-                      id="phone"
-                      required
-                      className="block w-full pl-11 pr-4 py-3.5 bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
-                      placeholder="Mobile number"
-                    />
+  type="tel"
+  id="phone"
+  name="phone"
+  required
+  className="block w-full pl-11 pr-4 py-3.5 bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
+  placeholder="Mobile number"
+/>
                   </div>
                 </div>
 
@@ -240,13 +272,13 @@ export default function AppointmentForm() {
                     <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                       <CalendarDays className="h-5 w-5 text-slate-400" />
                     </div>
-
-                    <input
-                      type="date"
-                      id="date"
-                      required
-                      className="block w-full pl-11 pr-4 py-3.5 md:text-sm bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
-                    />
+<input
+  type="date"
+  id="date"
+  name="date"
+  required
+  className="block w-full pl-11 pr-4 py-3.5 md:text-sm bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium"
+/>
                   </div>
                 </div>
 
@@ -264,16 +296,23 @@ export default function AppointmentForm() {
                       <Clock className="h-5 w-5 text-slate-400" />
                     </div>
 
-                    <select
-                      id="time"
-                      className="block w-full pl-11 pr-4 py-3.5 md:text-sm bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium appearance-none"
-                    >
-                      <option value="morning">Morning (10 AM - 1 PM)</option>
-
-                      <option value="afternoon">Afternoon (2 PM - 5 PM)</option>
-
-                      <option value="evening">Evening (6 PM - 8 PM)</option>
-                    </select>
+                   <select
+  id="time"
+  name="time"
+  required
+  className="block w-full pl-11 pr-4 py-3.5 md:text-sm bg-[#F8FAF9] border-transparent rounded-[14px] text-[#17212B] focus:border-[#0F766E] focus:bg-white focus:ring-2 focus:ring-[#E8F6FA] transition-all font-medium appearance-none"
+>
+  <option value="">Select a time slot</option>
+  <option value="Morning (10 AM - 1 PM)">
+    Morning (10 AM - 1 PM)
+  </option>
+  <option value="Afternoon (2 PM - 5 PM)">
+    Afternoon (2 PM - 5 PM)
+  </option>
+  <option value="Evening (6 PM - 8 PM)">
+    Evening (6 PM - 8 PM)
+  </option>
+</select>
                   </div>
                 </div>
               </div>
