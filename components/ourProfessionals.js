@@ -121,6 +121,7 @@ export default function OurProfessionals() {
                         transition-transform
                         duration-700
                         group-hover:scale-[1.02]
+                        rounded-t-2xl
                       "
                       sizes="(max-width: 640px) 55vw, 280px"
                     />

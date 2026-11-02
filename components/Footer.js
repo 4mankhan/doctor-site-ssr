@@ -5,6 +5,9 @@ import {
   MapPin,
   Clock3,
   ArrowUpRight,
+  Earth,
+  Code2,
+  Terminal,
 } from "lucide-react";
 
 import { navLinks, doctor } from "@/data/doctor";
@@ -13,17 +16,17 @@ export default function Footer() {
   const timings = doctor.placeholders.clinicTimings;
 
   return (
-    <footer id="contact" className="relative overflow-hidden bg-[#17212B] text-slate-300 border-t-4 border-[#0F766E]">
-
+    <footer
+      id="contact"
+      className="relative overflow-hidden bg-[#17212B] text-slate-300 border-t-4 border-[#0F766E]"
+    >
       {/* Decorative glow */}
       <div className="pointer-events-none absolute -top-32 right-0 h-72 w-72 rounded-full bg-[#0F766E]/10 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-40 -left-20 h-80 w-80 rounded-full bg-[#0F766E]/5 blur-3xl" />
 
       <div className="relative mx-auto max-w-[1280px] px-6 pt-14 pb-10 lg:px-8">
-
         {/* Main footer */}
         <div className="grid gap-12 lg:grid-cols-[1.25fr_0.75fr_1fr_1.15fr]">
-
           {/* Brand */}
           <div>
             <p className="text-xl font-extrabold text-white font-heading">
@@ -74,7 +77,6 @@ export default function Footer() {
             </p>
 
             <div className="space-y-4">
-
               {/* Phone */}
               <a
                 href={`tel:${doctor.placeholders.phone}`}
@@ -123,6 +125,28 @@ export default function Footer() {
                 </div>
               </div>
 
+              {/* Website Development CTA */}
+              <a
+                href="https://amankhan.vercel.app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group mt-3 inline-flex w-fit max-w-full items-center gap-2.5 rounded-lg border border-red-500/40 bg-gradient-to-r from-red-500/[0.10] via-red-500/[0.04] to-transparent px-3 py-2.5 transition-all duration-300 hover:border-red-400/40 hover:from-red-500/[0.18]"
+              >
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-teal-500/15 text-teal-400 transition-all duration-300 group-hover:scale-105 group-hover:bg-teal-500/25">
+                  <Terminal className="h-3.5 w-3.5" />
+                </div>
+
+                <div className="flex min-w-0 flex-col">
+                  <p className="text-[10px] font-medium tracking-wider text-slate-400">
+                    WANT TO OWN THIS WEBSITE?
+                  </p>
+
+                  <span className="mt-0.5 inline-flex items-center gap-1.5 text-xs font-semibold text-slate-200 transition-colors group-hover:text-teal-300">
+                    Get in Touch
+                    <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-teal-400 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
 
@@ -137,7 +161,6 @@ export default function Footer() {
             </div>
 
             <div className="mt-5 space-y-3">
-
               <div>
                 <p className="text-xs font-bold text-slate-300">
                   Monday – Wednesday
@@ -157,14 +180,9 @@ export default function Footer() {
               </div>
 
               <div>
-                <p className="text-xs font-bold text-slate-300">
-                  Sunday
-                </p>
-                <p className="mt-1 text-xs text-slate-500">
-                  {timings.sunday}
-                </p>
+                <p className="text-xs font-bold text-slate-300">Sunday</p>
+                <p className="mt-1 text-xs text-slate-500">{timings.sunday}</p>
               </div>
-
             </div>
 
             <Link
@@ -180,11 +198,8 @@ export default function Footer() {
         {/* Hospital information strip */}
         <div className="mt-12 rounded-2xl border border-slate-700/60 bg-white/[0.03] p-5">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-
             <div>
-              <p className="text-sm font-bold text-white">
-                Kohli Hospital
-              </p>
+              <p className="text-sm font-bold text-white">Kohli Hospital</p>
 
               <p className="mt-1 text-xs leading-5 text-slate-500">
                 Emergency & hospital admission facility for children.
@@ -217,16 +232,12 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-800/70 pt-7 text-xs text-slate-500 md:flex-row">
-
           <p>
-            © {new Date().getFullYear()}{" "}
-            {doctor.hospitalDisplayName}. All rights reserved.
+            © {new Date().getFullYear()} {doctor.hospitalDisplayName}. All
+            rights reserved.
           </p>
 
-          <p className="text-center">
-            Pediatric Care · Agra, Uttar Pradesh
-          </p>
-
+          <p className="text-center">Pediatric Care · Agra, Uttar Pradesh</p>
         </div>
       </div>
     </footer>

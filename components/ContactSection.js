@@ -93,15 +93,15 @@ export default function ContactSection() {
                     </p>
                   </div>
 
-                  <h4 className="mt-2 text-xl font-extrabold tracking-tight text-[#17212B] sm:text-2xl font-[family-name:var(--font-poppins)]">
-                    Dedicated pediatric care, emergency support & hospital admission.
-                  </h4>
+<h4 className="mt-2 text-xl font-extrabold tracking-tight text-[#17212B] sm:text-2xl font-[family-name:var(--font-poppins)]">
+  Dedicated pediatric care, emergency support & hospital admission.
+</h4>
 
-                  <p className="mt-2.5 max-w-2xl text-sm leading-6 text-[#64748B]">
-                    Kohli Hospital provides pediatric consultation, emergency support and
-                    hospital admission care under the care of Dr. Sunil Kohli and Dr. Monica
-                    Kohli.
-                  </p>
+<p className="mt-2.5 max-w-2xl text-sm leading-6 text-[#64748B]">
+  Kohli Hospital provides pediatric consultation, emergency support and
+  hospital admission care under the care of Dr. Sunil Kohli and Dr. Monica
+  Kohli.
+</p>
 
                 </div>
 
